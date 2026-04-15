@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lasagna al Ragù — Kitchen SOP · Fabrizio Cercatore Standard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#E10600;
+    --black:#000;
+    --ink:#111;
+    --paper:#F5F1EA;
+    --cream:#EFE8DC;
+    --rule:#000;
+    --muted:#6b6b6b;
+    --green:#0E8A3E;
+    --amber:#E0A100;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{background:var(--paper);color:var(--ink);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+
+  /* ============ TOP BAR ============ */
+  .topbar{
+    border-bottom:2px solid var(--black);
+    padding:14px 32px;
+    display:grid;
+    grid-template-columns:1fr auto 1fr;
+    align-items:center;
+    background:var(--paper);
+    position:sticky;top:0;z-index:50;
+  }
+  .topbar .left{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.18em;}
+  .topbar .center{font-family:'Archivo Black',sans-serif;font-size:18px;letter-spacing:.04em;}
+  .topbar .center .dot{color:var(--red);}
+  .topbar .right{font-family:'Bebas Neue',sans-serif;font-size:14px;letter-spacing:.18em;text-align:right;}
+
+  /* ============ HERO ============ */
+  .hero{
+    display:grid;
+    grid-template-columns:1.15fr 1fr;
+    border-bottom:2px solid var(--black);
+    min-height:78vh;
+  }
+  .hero-left{
+    padding:56px 48px 40px;
+    border-right:2px solid var(--black);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+    background:var(--paper);
+    position:relative;
+  }
+  .kicker{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:14px;
+    letter-spacing:.3em;
+    color:var(--red);
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-family:'Archivo Black',sans-serif;
+    font-size:clamp(56px,8vw,128px);
+    line-height:.88;
+    letter-spacing:-.02em;
+    text-transform:uppercase;
+  }
+  .hero h1 .ragu{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-weight:400;
+    text-transform:none;
+    color:var(--red);
+    letter-spacing:-.01em;
+  }
+  .hero-meta{
+    margin-top:48px;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    border-top:1px solid var(--black);
+    border-bottom:1px solid var(--black);
+  }
+  .hero-meta div{
+    padding:18px 14px 18px 0;
+    border-right:1px solid #00000022;
+  }
+  .hero-meta div:last-child{border-right:none;padding-right:0;}
+  .hero-meta .label{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:11px;
+    letter-spacing:.22em;
+    color:var(--muted);
+    margin-bottom:6px;
+  }
+  .hero-meta .val{
+    font-family:'Archivo Black',sans-serif;
+    font-size:22px;
+  }
+  .tagline{
+    margin-top:28px;
+    max-width:520px;
+    font-size:16px;
+    line-height:1.55;
+    color:#222;
+  }
+  .tagline strong{color:var(--red);}
+  .hero-right{
+    background:var(--black);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-right img{
+    width:100%;height:100%;object-fit:cover;
+    filter:saturate(1.05) contrast(1.02);
+  }
+  .hero-right .overlay-tag{
+    position:absolute;
+    top:24px;left:24px;
+    background:var(--red);
+    color:#fff;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:13px;
+    letter-spacing:.22em;
+    padding:8px 14px;
+  }
+  .hero-right .overlay-caption{
+    position:absolute;
+    bottom:24px;right:24px;left:24px;
+    color:#fff;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:14px;
+    letter-spacing:.18em;
+    text-align:right;
+    text-shadow:0 2px 12px rgba(0,0,0,.6);
+  }
+
+  /* ============ HASHTAG MARQUEE ============ */
+  .marquee{
+    background:var(--black);
+    color:#fff;
+    border-bottom:2px solid var(--black);
+    overflow:hidden;
+    padding:14px 0;
+  }
+  .marquee-track{
+    display:flex;
+    gap:48px;
+    white-space:nowrap;
+    font-family:'Archivo Black',sans-serif;
+    font-size:22px;
+    letter-spacing:.06em;
+    animation:scroll 30s linear infinite;
+  }
+  .marquee-track span{display:inline-block;}
+  .marquee-track .red{color:var(--red);}
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ============ SECTION SCAFFOLDING ============ */
+  section{padding:0;}
+  .section-head{
+    display:grid;
+    grid-template-columns:140px 1fr auto;
+    align-items:end;
+    padding:64px 48px 24px;
+    border-bottom:2px solid var(--black);
+    gap:32px;
+  }
+  .section-num{
+    font-family:'Archivo Black',sans-serif;
+    font-size:96px;
+    line-height:.85;
+    color:var(--red);
+  }
+  .section-title{
+    font-family:'Archivo Black',sans-serif;
+    font-size:48px;
+    line-height:.95;
+    text-transform:uppercase;
+    letter-spacing:-.01em;
+  }
+  .section-meta{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:14px;
+    letter-spacing:.22em;
+    color:var(--muted);
+    text-align:right;
+    line-height:1.4;
+  }
+
+  /* ============ TIMELINE ============ */
+  .timeline{
+    padding:48px;
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:24px;
+    border-bottom:2px solid var(--black);
+  }
+  .timeline-card{
+    background:var(--paper);
+    border:2px solid var(--black);
+    padding:20px;
+    grid-column:span 4;
+    position:relative;
+  }
+  .timeline-card.offset{margin-top:32px;}
+  .timeline-card .day{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:13px;
+    letter-spacing:.22em;
+    color:var(--red);
+    margin-bottom:10px;
+  }
+  .timeline-card h3{
+    font-family:'Archivo Black',sans-serif;
+    font-size:20px;
+    margin-bottom:12px;
+    text-transform:uppercase;
+  }
+  .timeline-card ul{list-style:none;}
+  .timeline-card li{
+    padding:6px 0;
+    border-bottom:1px dashed #0002;
+    font-size:14px;
+  }
+  .timeline-card li:last-child{border-bottom:none;}
+
+  /* ============ INGREDIENTS GRID ============ */
+  .ing-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr 1fr;
+    border-bottom:2px solid var(--black);
+  }
+  .ing-block{
+    padding:36px 32px;
+    border-right:2px solid var(--black);
+  }
+  .ing-block:last-child{border-right:none;}
+  .ing-block.feature{
+    background:var(--black);
+    color:var(--paper);
+  }
+  .ing-block.feature .ing-name{color:#fff;}
+  .ing-block.feature .ing-name::after{background:var(--red);}
+  .ing-block .ing-name{
+    font-family:'Archivo Black',sans-serif;
+    font-size:24px;
+    text-transform:uppercase;
+    margin-bottom:24px;
+    position:relative;
+    padding-bottom:14px;
+  }
+  .ing-block .ing-name::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:48px;height:4px;
+    background:var(--red);
+  }
+  .ing-list{list-style:none;}
+  .ing-list li{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:8px 0;
+    font-size:14px;
+    border-bottom:1px solid #0001;
+  }
+  .ing-block.feature .ing-list li{border-bottom:1px solid #ffffff22;}
+  .ing-list .qty{
+    font-family:'Archivo Black',sans-serif;
+    font-size:13px;
+    white-space:nowrap;
+    color:var(--red);
+  }
+  .ing-block.feature .ing-list .qty{color:#fff;}
+  .ing-list .item{font-weight:400;}
+  .yield-row{
+    grid-column:1/-1;
+    background:var(--red);
+    color:#fff;
+    padding:14px 32px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:.22em;
+    font-size:14px;
+  }
+
+  /* ============ STATIONS ============ */
+  .stations{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-bottom:2px solid var(--black);
+  }
+  .station{
+    padding:36px 32px;
+    border-right:2px solid var(--black);
+  }
+  .station:last-child{border-right:none;}
+  .station .num{
+    font-family:'Archivo Black',sans-serif;
+    font-size:48px;
+    color:var(--red);
+    line-height:1;
+  }
+  .station h3{
+    font-family:'Archivo Black',sans-serif;
+    font-size:22px;
+    text-transform:uppercase;
+    margin:12px 0 18px;
+  }
+  .station ul{list-style:none;}
+  .station li{
+    padding:6px 0;
+    font-size:14px;
+    border-bottom:1px dashed #0002;
+  }
+
+  /* ============ EXECUTION STEPS ============ */
+  .exec{padding:0;}
+  .step{
+    display:grid;
+    grid-template-columns:200px 1fr 1fr;
+    border-bottom:2px solid var(--black);
+    min-height:280px;
+  }
+  .step.alt{grid-template-columns:1fr 1fr 200px;}
+  .step.alt .step-id{order:3;border-right:none;border-left:2px solid var(--black);}
+  .step-id{
+    background:var(--black);
+    color:#fff;
+    padding:32px;
+    border-right:2px solid var(--black);
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .step-id .num{
+    font-family:'Archivo Black',sans-serif;
+    font-size:88px;
+    line-height:.85;
+    color:var(--red);
+  }
+  .step-id .name{
+    font-family:'Archivo Black',sans-serif;
+    font-size:22px;
+    text-transform:uppercase;
+    line-height:1;
+  }
+  .step-id .duration{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:13px;
+    letter-spacing:.22em;
+    color:#fff9;
+    margin-top:12px;
+  }
+  .step-body{
+    padding:32px;
+    border-right:2px solid var(--black);
+  }
+  .step.alt .step-body:last-of-type{border-right:none;}
+  .step-body h4{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:13px;
+    letter-spacing:.22em;
+    color:var(--red);
+    margin-bottom:14px;
+  }
+  .phase{
+    display:grid;
+    grid-template-columns:64px 1fr;
+    gap:16px;
+    padding:14px 0;
+    border-bottom:1px solid #0001;
+  }
+  .phase:last-child{border-bottom:none;}
+  .phase .clock{
+    font-family:'Archivo Black',sans-serif;
+    font-size:14px;
+    color:var(--red);
+  }
+  .phase .what{font-size:14px;line-height:1.5;}
+  .phase .what strong{font-family:'Archivo Black',sans-serif;font-size:13px;display:block;text-transform:uppercase;margin-bottom:4px;}
+  .critical-tag{
+    display:inline-block;
+    background:var(--red);
+    color:#fff;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:11px;
+    letter-spacing:.22em;
+    padding:3px 8px;
+    margin-left:8px;
+  }
+
+  /* ============ ASSEMBLY ============ */
+  .assembly{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border-bottom:2px solid var(--black);
+  }
+  .assembly-left{
+    padding:48px;
+    border-right:2px solid var(--black);
+  }
+  .assembly-left h3{
+    font-family:'Archivo Black',sans-serif;
+    font-size:32px;
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .layer-stack{
+    margin-top:24px;
+  }
+  .layer{
+    display:grid;
+    grid-template-columns:48px 1fr;
+    align-items:center;
+    gap:16px;
+    padding:14px 16px;
+    margin-bottom:6px;
+    border-left:6px solid var(--red);
+    background:#fff;
+  }
+  .layer .n{
+    font-family:'Archivo Black',sans-serif;
+    font-size:24px;
+    color:var(--red);
+  }
+  .layer .desc{font-size:14px;line-height:1.4;}
+  .layer .desc strong{font-family:'Archivo Black',sans-serif;text-transform:uppercase;font-size:13px;display:block;}
+  .repeat-banner{
+    background:var(--black);
+    color:#fff;
+    padding:16px;
+    text-align:center;
+    font-family:'Bebas Neue',sans-serif;
+    letter-spacing:.22em;
+    font-size:16px;
+    margin:12px 0;
+  }
+  .repeat-banner span{color:var(--red);}
+  .assembly-right{
+    padding:48px;
+    background:var(--cream);
+  }
+  .assembly-right h3{
+    font-family:'Archivo Black',sans-serif;
+    font-size:32px;
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+  .bake-block{
+    background:var(--black);
+    color:#fff;
+    padding:28px;
+    margin-bottom:24px;
+  }
+  .bake-block .temp{
+    font-family:'Archivo Black',sans-serif;
+    font-size:64px;
+    color:var(--red);
+    line-height:1;
+  }
+  .bake-block .temp small{font-size:24px;color:#fff;}
+  .bake-block .time{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:18px;
+    letter-spacing:.22em;
+    margin-top:12px;
+  }
+  .visual-cues{
+    background:#fff;
+    border:2px solid var(--black);
+    padding:20px;
+  }
+  .visual-cues h4{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:13px;
+    letter-spacing:.22em;
+    color:var(--red);
+    margin-bottom:10px;
+  }
+  .visual-cues li{
+    list-style:none;
+    padding:6px 0;
+    font-size:14px;
+    display:flex;
+    gap:10px;
+  }
+  .visual-cues li::before{content:'→';color:var(--red);font-weight:700;}
+
+  /* ============ COOL & PORTION ============ */
+  .cool-portion{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    border-bottom:2px solid var(--black);
+  }
+  .cp-card{
+    padding:48px 32px;
+    border-right:2px solid var(--black);
+  }
+  .cp-card:last-child{border-right:none;}
+  .cp-card .icon{
+    font-family:'Archivo Black',sans-serif;
+    font-size:64px;
+    color:var(--red);
+    line-height:1;
+  }
+  .cp-card h3{
+    font-family:'Archivo Black',sans-serif;
+    font-size:24px;
+    text-transform:uppercase;
+    margin:12px 0 16px;
+  }
+  .cp-card p{font-size:14px;line-height:1.6;}
+  .cp-card .critical{
+    display:inline-block;
+    background:var(--red);
+    color:#fff;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:11px;
+    letter-spacing:.2em;
+    padding:3px 8px;
+    margin-bottom:12px;
+  }
+
+  /* ============ QC CHECKLIST ============ */
+  .qc{
+    padding:48px;
+    border-bottom:2px solid var(--black);
+    background:var(--cream);
+  }
+  .qc-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:20px;
+    margin-top:32px;
+  }
+  .qc-card{
+    background:#fff;
+    border:2px solid var(--black);
+    padding:24px;
+  }
+  .qc-card h3{
+    font-family:'Archivo Black',sans-serif;
+    font-size:20px;
+    text-transform:uppercase;
+    margin-bottom:16px;
+    padding-bottom:10px;
+    border-bottom:2px solid var(--black);
+  }
+  .qc-row{
+    display:grid;
+    grid-template-columns:24px 1fr;
+    gap:10px;
+    padding:8px 0;
+    font-size:13px;
+    line-height:1.4;
+    align-items:start;
+  }
+  .qc-dot{
+    width:14px;height:14px;
+    border-radius:50%;
+    margin-top:3px;
+  }
+  .qc-dot.g{background:var(--green);}
+  .qc-dot.y{background:var(--amber);}
+  .qc-dot.r{background:var(--red);}
+
+  /* ============ REHEAT ============ */
+  .reheat{
+    display:grid;
+    grid-template-columns:1fr 1.3fr;
+    border-bottom:2px solid var(--black);
+  }
+  .reheat-left{
+    background:var(--black);
+    color:#fff;
+    padding:64px 48px;
+    border-right:2px solid var(--black);
+  }
+  .reheat-left .kicker{color:var(--red);}
+  .reheat-left h2{
+    font-family:'Archivo Black',sans-serif;
+    font-size:64px;
+    line-height:.9;
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .reheat-left h2 em{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-weight:400;
+    text-transform:none;
+    color:var(--red);
+  }
+  .reheat-left p{
+    font-size:15px;
+    line-height:1.6;
+    color:#ddd;
+    margin-top:16px;
+  }
+  .reheat-right{padding:0;}
+  .reheat-method{
+    display:grid;
+    grid-template-columns:80px 1fr;
+    border-bottom:1px solid #0002;
+  }
+  .reheat-method:last-child{border-bottom:none;}
+  .reheat-method .num{
+    background:var(--red);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:'Archivo Black',sans-serif;
+    font-size:32px;
+  }
+  .reheat-method .body{padding:24px 32px;}
+  .reheat-method h4{
+    font-family:'Archivo Black',sans-serif;
+    font-size:18px;
+    text-transform:uppercase;
+    margin-bottom:8px;
+  }
+  .reheat-method .specs{
+    display:flex;gap:20px;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:13px;
+    letter-spacing:.18em;
+    color:var(--red);
+    margin-bottom:10px;
+  }
+  .reheat-method ol{padding-left:18px;font-size:14px;line-height:1.6;}
+
+  /* ============ MAESTRO ============ */
+  .maestro{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    background:var(--paper);
+    border-bottom:2px solid var(--black);
+  }
+  .maestro-card{
+    padding:36px 32px;
+    border-right:2px solid var(--black);
+    border-bottom:2px solid var(--black);
+  }
+  .maestro-card:nth-child(3n){border-right:none;}
+  .maestro-card:nth-last-child(-n+3){border-bottom:none;}
+  .maestro-card .num{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:13px;
+    letter-spacing:.22em;
+    color:var(--red);
+    margin-bottom:8px;
+  }
+  .maestro-card p{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-size:20px;
+    line-height:1.4;
+  }
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--black);
+    color:#fff;
+    padding:48px;
+  }
+  .footer-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr 1fr;
+    gap:32px;
+    margin-bottom:32px;
+  }
+  footer h3{
+    font-family:'Archivo Black',sans-serif;
+    font-size:32px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  footer h3 em{
+    font-family:'Playfair Display',serif;
+    font-style:italic;
+    font-weight:400;
+    color:var(--red);
+    text-transform:none;
+  }
+  footer .label{
+    font-family:'Bebas Neue',sans-serif;
+    font-size:12px;
+    letter-spacing:.22em;
+    color:#fff7;
+    margin-bottom:8px;
+  }
+  footer p{font-size:14px;line-height:1.6;color:#ddd;}
+  .footer-bottom{
+    border-top:1px solid #fff3;
+    padding-top:20px;
+    display:flex;
+    justify-content:space-between;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:12px;
+    letter-spacing:.22em;
+    color:#fff7;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px){
+    .hero{grid-template-columns:1fr;}
+    .hero-left{border-right:none;border-bottom:2px solid var(--black);padding:32px 20px;}
+    .hero-meta{grid-template-columns:repeat(2,1fr);}
+    .topbar{grid-template-columns:1fr;text-align:center;gap:6px;padding:10px 16px;}
+    .topbar .left,.topbar .right{text-align:center;}
+    .section-head{grid-template-columns:1fr;padding:40px 20px 20px;gap:12px;}
+    .section-num{font-size:64px;}
+    .section-title{font-size:32px;}
+    .section-meta{text-align:left;}
+    .timeline{grid-template-columns:1fr;padding:24px 20px;}
+    .timeline-card{grid-column:span 1;}
+    .timeline-card.offset{margin-top:0;}
+    .ing-grid{grid-template-columns:1fr;}
+    .ing-block{border-right:none;border-bottom:2px solid var(--black);}
+    .stations{grid-template-columns:1fr;}
+    .station{border-right:none;border-bottom:2px solid var(--black);}
+    .step,.step.alt{grid-template-columns:1fr;}
+    .step-id,.step.alt .step-id{border-right:none;border-left:none;border-bottom:2px solid var(--black);order:0;}
+    .step-body{border-right:none;border-bottom:2px solid var(--black);}
+    .assembly{grid-template-columns:1fr;}
+    .assembly-left{border-right:none;border-bottom:2px solid var(--black);padding:32px 20px;}
+    .assembly-right{padding:32px 20px;}
+    .cool-portion{grid-template-columns:1fr;}
+    .cp-card{border-right:none;border-bottom:2px solid var(--black);}
+    .qc{padding:32px 20px;}
+    .qc-grid{grid-template-columns:1fr 1fr;}
+    .reheat{grid-template-columns:1fr;}
+    .reheat-left{padding:40px 24px;border-right:none;border-bottom:2px solid var(--black);}
+    .reheat-left h2{font-size:40px;}
+    .maestro{grid-template-columns:1fr;}
+    .maestro-card{border-right:none !important;border-bottom:2px solid var(--black) !important;}
+    .footer-grid{grid-template-columns:1fr;}
+    .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="left">FABRIZIO CERCATORE · KITCHEN STANDARD</div>
+  <div class="center">HOT<span class="dot">·</span>ITALIAN <span style="color:var(--red);">SOP</span></div>
+  <div class="right">DOC v1.0 · APR 2026</div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <div class="kicker">SOP / 01 · LINE COOK PRODUCTION</div>
+      <h1>LASAGNA<br/>AL <span class="ragu">Ragù</span></h1>
+      <p class="tagline">
+        The Maestro's standard, written for the line. Follow the steps, hit the cues, ship the product.
+        <strong>No questions. No shortcuts. No compromises.</strong>
+      </p>
+    </div>
+    <div class="hero-meta">
+      <div>
+        <div class="label">YIELD</div>
+        <div class="val">12 PORTIONS</div>
+      </div>
+      <div>
+        <div class="label">PAN</div>
+        <div class="val">12&times;20"</div>
+      </div>
+      <div>
+        <div class="label">TOTAL TIME</div>
+        <div class="val">~5 HRS</div>
+      </div>
+      <div>
+        <div class="label">BAKE</div>
+        <div class="val">350°F</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="overlay-tag">FINAL PRODUCT — REFERENCE</div>
+    <img src="lasagna.png" alt="Lasagna al Ragù — finished plated portion" />
+    <div class="overlay-caption">If yours doesn't look like this — don't plate it.</div>
+  </div>
+</section>
+
+<!-- HASHTAG MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span>#PIZZAASART</span><span class="red">·</span>
+    <span>#PASSIONE</span><span class="red">·</span>
+    <span>#EATREAL</span><span class="red">·</span>
+    <span>TUTTO È POSSIBILE</span><span class="red">·</span>
+    <span>#PIZZAASART</span><span class="red">·</span>
+    <span>#PASSIONE</span><span class="red">·</span>
+    <span>#EATREAL</span><span class="red">·</span>
+    <span>TUTTO È POSSIBILE</span><span class="red">·</span>
+    <span>#PIZZAASART</span><span class="red">·</span>
+    <span>#PASSIONE</span><span class="red">·</span>
+    <span>#EATREAL</span><span class="red">·</span>
+    <span>TUTTO È POSSIBILE</span><span class="red">·</span>
+  </div>
+</div>
+
+<!-- SECTION 01: TIMELINE -->
+<section>
+  <div class="section-head">
+    <div class="section-num">01</div>
+    <div class="section-title">PRODUCTION<br/>TIMELINE</div>
+    <div class="section-meta">DAY 1 OR MORNING PREP<br/>RECOMMENDED FLOW</div>
+  </div>
+  <div class="timeline">
+    <div class="timeline-card">
+      <div class="day">PHASE 01 · 0:00 → 3:30</div>
+      <h3>Build the Ragù</h3>
+      <ul>
+        <li>Soffritto, brown the meat</li>
+        <li>Deglaze with wine</li>
+        <li>Add tomato, simmer 3 hrs minimum</li>
+      </ul>
+    </div>
+    <div class="timeline-card offset">
+      <div class="day">PHASE 02 · OVERLAP</div>
+      <h3>Pasta + Besciamella</h3>
+      <ul>
+        <li>Make dough, rest, roll, blanch, shock</li>
+        <li>Roux, milk, smooth besciamella</li>
+        <li>Run parallel to ragù simmer</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="day">PHASE 03 · ASSEMBLY</div>
+      <h3>Layer + Bake</h3>
+      <ul>
+        <li>5 full layers in hotel pan</li>
+        <li>40 min @ 350°F</li>
+        <li>Bubbling edges, golden top</li>
+      </ul>
+    </div>
+    <div class="timeline-card offset">
+      <div class="day">PHASE 04 · COOL</div>
+      <h3>Rest + Firm</h3>
+      <ul>
+        <li>20–30 min room temp</li>
+        <li>Then fridge until firm</li>
+        <li>DO NOT rush this step</li>
+      </ul>
+    </div>
+    <div class="timeline-card">
+      <div class="day">PHASE 05 · PORTION</div>
+      <h3>Cut + Pack</h3>
+      <ul>
+        <li>12 equal pieces, clean lines</li>
+        <li>Foil containers</li>
+      </ul>
+    </div>
+    <div class="timeline-card offset">
+      <div class="day">PHASE 06 · FREEZE</div>
+      <h3>Blast Chill</h3>
+      <ul>
+        <li>Into blast chiller immediately</li>
+        <li>Fully frozen before storage</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02: INGREDIENTS -->
+<section>
+  <div class="section-head">
+    <div class="section-num">02</div>
+    <div class="section-title">INGREDIENT<br/>SCALING</div>
+    <div class="section-meta">1 HOTEL PAN<br/>WEIGH EVERYTHING</div>
+  </div>
+  <div class="ing-grid">
+    <div class="yield-row">
+      <span>SCALED FOR · 1 FULL HOTEL PAN</span>
+      <span>12 × 20" · 12 PORTIONS</span>
+    </div>
+    <div class="ing-block feature">
+      <div class="ing-name">Ragù</div>
+      <ul class="ing-list">
+        <li><span class="item">Beef</span><span class="qty">800 g</span></li>
+        <li><span class="item">Pork</span><span class="qty">200 g</span></li>
+        <li><span class="item">Onion, fine dice</span><span class="qty">1</span></li>
+        <li><span class="item">Carrot, fine dice</span><span class="qty">1</span></li>
+        <li><span class="item">Celery stalk, fine dice</span><span class="qty">1</span></li>
+        <li><span class="item">Olive oil</span><span class="qty">2–3 tbsp</span></li>
+        <li><span class="item">White wine</span><span class="qty">150 ml</span></li>
+        <li><span class="item">Pelati tomatoes, hand-crushed</span><span class="qty">800 g</span></li>
+        <li><span class="item">Salt</span><span class="qty">to taste</span></li>
+      </ul>
+    </div>
+    <div class="ing-block">
+      <div class="ing-name">Pasta</div>
+      <ul class="ing-list">
+        <li><span class="item">00 flour</span><span class="qty">800 g</span></li>
+        <li><span class="item">Caputo flour</span><span class="qty">200 g</span></li>
+        <li><span class="item">Eggs</span><span class="qty">5</span></li>
+      </ul>
+    </div>
+    <div class="ing-block">
+      <div class="ing-name">Besciamella</div>
+      <ul class="ing-list">
+        <li><span class="item">Butter</span><span class="qty">100 g</span></li>
+        <li><span class="item">Flour</span><span class="qty">100 g</span></li>
+        <li><span class="item">Milk</span><span class="qty">1 L</span></li>
+        <li><span class="item">Salt</span><span class="qty">to taste</span></li>
+      </ul>
+    </div>
+    <div class="ing-block">
+      <div class="ing-name">Finish</div>
+      <ul class="ing-list">
+        <li><span class="item">Parmigiano Reggiano</span><span class="qty">as needed</span></li>
+      </ul>
+      <p style="font-size:13px;color:var(--muted);margin-top:18px;line-height:1.5;font-style:italic;">
+        Heavy hand on the top layer. The crust depends on it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03: STATION SETUP -->
+<section>
+  <div class="section-head">
+    <div class="section-num">03</div>
+    <div class="section-title">STATION<br/>SETUP</div>
+    <div class="section-meta">SET UP BEFORE<br/>YOU FIRE A SINGLE BURNER</div>
+  </div>
+  <div class="stations">
+    <div class="station">
+      <div class="num">A</div>
+      <h3>Hot Line</h3>
+      <ul>
+        <li>Large heavy-bottom pot — ragù</li>
+        <li>Medium pot — besciamella</li>
+        <li>Wooden spoons, whisk, ladles</li>
+      </ul>
+    </div>
+    <div class="station">
+      <div class="num">B</div>
+      <h3>Pasta Station</h3>
+      <ul>
+        <li>Pasta machine (cleaned, oiled)</li>
+        <li>Sheet trays + parchment</li>
+        <li>Ice bath — large, ready before boiling</li>
+      </ul>
+    </div>
+    <div class="station">
+      <div class="num">C</div>
+      <h3>Assembly Station</h3>
+      <ul>
+        <li>1 full hotel pan, lightly oiled</li>
+        <li>Two ladles — ragù + besciamella</li>
+        <li>Offset spatula</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04: EXECUTION -->
+<section>
+  <div class="section-head">
+    <div class="section-num">04</div>
+    <div class="section-title">EXECUTION<br/>SOP</div>
+    <div class="section-meta">FOUR COMPONENTS<br/>NON-NEGOTIABLE TIMING</div>
+  </div>
+
+  <div class="exec">
+
+    <!-- STEP 1: RAGU -->
+    <div class="step">
+      <div class="step-id">
+        <div>
+          <div class="num">01</div>
+          <div class="name">Ragù</div>
+        </div>
+        <div class="duration">TOTAL · ~3 HOURS</div>
+      </div>
+      <div class="step-body">
+        <h4>BUILD PHASE</h4>
+        <div class="phase">
+          <div class="clock">0:00</div>
+          <div class="what"><strong>Start Soffritto</strong>Heat olive oil over medium-low. Add onion, carrot, celery. Sweat 8–10 min. No color.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">0:10</div>
+          <div class="what"><strong>Add Meat</strong>Add beef and pork. Break up evenly across the pot.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">0:10–0:25</div>
+          <div class="what"><strong>Browning Phase<span class="critical-tag">CRITICAL</span></strong>Cook until properly browned. No grey meat. Color must develop. This is the flavor.</div>
+        </div>
+      </div>
+      <div class="step-body" style="border-right:none;">
+        <h4>FINISH PHASE</h4>
+        <div class="phase">
+          <div class="clock">0:25</div>
+          <div class="what"><strong>Deglaze</strong>Add white wine. Reduce until almost dry, ~5 min. Wine goes BEFORE tomato. Always.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">0:30</div>
+          <div class="what"><strong>Add Tomatoes</strong>Hand-crushed pelati. Salt lightly.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">0:30–3:30</div>
+          <div class="what"><strong>Simmer</strong>Low heat, gentle bubble. Stir every 20–30 min. Final texture: thick, not watery. Minimum 3 hours, no exceptions.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP 2: PASTA -->
+    <div class="step alt">
+      <div class="step-body">
+        <h4>DOUGH + REST</h4>
+        <div class="phase">
+          <div class="clock">MIX</div>
+          <div class="what"><strong>Knead</strong>Combine flours and eggs. Mix and knead 10–12 min until smooth and elastic.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">REST</div>
+          <div class="what"><strong>30 Minutes Covered</strong>Wrap tightly. Do not skip the rest. The gluten needs it.</div>
+        </div>
+      </div>
+      <div class="step-body">
+        <h4>ROLL + COOK</h4>
+        <div class="phase">
+          <div class="clock">ROLL</div>
+          <div class="what"><strong>#7 → #2</strong>Start at setting #7, work down to #2. Even thickness throughout the sheet.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">BOIL</div>
+          <div class="what"><strong>~1 minute</strong>Heavily salted water — like pasta water. Cook sheets ~1 min.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">SHOCK</div>
+          <div class="what"><strong>Ice Bath<span class="critical-tag">MANDATORY</span></strong>Immediately into ice bath. Lay flat on oiled trays. Do not stack wet.</div>
+        </div>
+      </div>
+      <div class="step-id">
+        <div>
+          <div class="num">02</div>
+          <div class="name">Pasta<br/>Sheets</div>
+        </div>
+        <div class="duration">TOTAL · ~45 MIN</div>
+      </div>
+    </div>
+
+    <!-- STEP 3: BESCIAMELLA -->
+    <div class="step">
+      <div class="step-id">
+        <div>
+          <div class="num">03</div>
+          <div class="name">Besciamella</div>
+        </div>
+        <div class="duration">TOTAL · ~15 MIN</div>
+      </div>
+      <div class="step-body">
+        <h4>BUILD ROUX</h4>
+        <div class="phase">
+          <div class="clock">0:00</div>
+          <div class="what"><strong>Melt Butter</strong>Medium heat, medium pot.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">0:02</div>
+          <div class="what"><strong>Add Flour</strong>Whisk in flour. Cook 2–3 min. No color — keep it blonde.</div>
+        </div>
+      </div>
+      <div class="step-body" style="border-right:none;">
+        <h4>FINISH SAUCE</h4>
+        <div class="phase">
+          <div class="clock">0:05</div>
+          <div class="what"><strong>Add Milk Slowly</strong>Pour milk in slowly, whisking constantly. No lumps.</div>
+        </div>
+        <div class="phase">
+          <div class="clock">0:10–0:15</div>
+          <div class="what"><strong>Cook to Coat</strong>Cook until smooth and lightly thick. Should coat the spoon but still pourable. Loose, not heavy.</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SECTION 05: ASSEMBLY + BAKE -->
+<section>
+  <div class="section-head">
+    <div class="section-num">05</div>
+    <div class="section-title">ASSEMBLY<br/>+ BAKE</div>
+    <div class="section-meta">15–20 MIN BUILD<br/>40 MIN OVEN</div>
+  </div>
+  <div class="assembly">
+    <div class="assembly-left">
+      <h3>Layering Order</h3>
+      <p style="font-size:14px;line-height:1.6;color:#444;">
+        Pan: full hotel pan, lightly oiled. Five full layers total. Repeat the sequence below five times.
+      </p>
+      <div class="layer-stack">
+        <div class="layer">
+          <div class="n">1</div>
+          <div class="desc"><strong>Light Ragù — Base</strong>Thin layer to prevent sticking.</div>
+        </div>
+        <div class="layer">
+          <div class="n">2</div>
+          <div class="desc"><strong>Pasta Sheet</strong>Edge to edge. Trim if needed.</div>
+        </div>
+        <div class="layer">
+          <div class="n">3</div>
+          <div class="desc"><strong>Besciamella</strong>Even spread, full coverage.</div>
+        </div>
+        <div class="layer">
+          <div class="n">4</div>
+          <div class="desc"><strong>Ragù</strong>Generous, even.</div>
+        </div>
+        <div class="repeat-banner">REPEAT SEQUENCE <span>×5</span> TOTAL LAYERS</div>
+        <div class="layer" style="border-left-color:var(--black);background:var(--black);color:#fff;">
+          <div class="n" style="color:#fff;">★</div>
+          <div class="desc"><strong style="color:var(--red);">TOP LAYER</strong>Finish with ragù. Heavy Parmigiano Reggiano over the top.</div>
+        </div>
+      </div>
+    </div>
+    <div class="assembly-right">
+      <h3>Bake</h3>
+      <div class="bake-block">
+        <div class="temp">350<small>°F</small></div>
+        <div class="time">175°C · 40 MINUTES</div>
+      </div>
+      <div class="visual-cues">
+        <h4>VISUAL CUES — PULL WHEN</h4>
+        <ul>
+          <li>Bubbling edges around the perimeter</li>
+          <li>Light golden top, not burnt</li>
+          <li>Parmigiano crust set, not greasy</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 06: COOL + PORTION -->
+<section>
+  <div class="section-head">
+    <div class="section-num">06</div>
+    <div class="section-title">COOL · PORTION<br/>· FREEZE</div>
+    <div class="section-meta">CRITICAL FOR QUALITY<br/>RUSHING THIS WRECKS THE PAN</div>
+  </div>
+  <div class="cool-portion">
+    <div class="cp-card">
+      <div class="critical">CRITICAL</div>
+      <div class="icon">01</div>
+      <h3>Rest</h3>
+      <p>Cool at room temperature 20–30 min. Then transfer to fridge until fully firm. Cutting hot lasagna will collapse the layers.</p>
+    </div>
+    <div class="cp-card">
+      <div class="icon">02</div>
+      <h3>Cut</h3>
+      <p>Once firm, portion into 12 equal pieces. Clean, vertical knife strokes. Wipe blade between cuts for clean lines.</p>
+    </div>
+    <div class="cp-card">
+      <div class="icon">03</div>
+      <h3>Pack + Blast</h3>
+      <p>Transfer each portion to foil containers. Into the blast chiller immediately. Freeze fully before moving to long-term storage.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 07: QC -->
+<section class="qc">
+  <div class="section-head" style="padding:0 0 24px;border-bottom:2px solid var(--black);">
+    <div class="section-num">07</div>
+    <div class="section-title">QUALITY<br/>CONTROL</div>
+    <div class="section-meta">LINE COOK READY<br/>READ BEFORE PLATING</div>
+  </div>
+  <div class="qc-grid">
+    <div class="qc-card">
+      <h3>Ragù</h3>
+      <div class="qc-row"><div class="qc-dot g"></div><div><strong>PASS</strong> — Deep flavor, rich, glossy</div></div>
+      <div class="qc-row"><div class="qc-dot y"></div><div><strong>HOLD</strong> — Slightly loose, cook longer</div></div>
+      <div class="qc-row"><div class="qc-dot r"></div><div><strong>FAIL</strong> — Watery or pale, not acceptable</div></div>
+    </div>
+    <div class="qc-card">
+      <h3>Pasta</h3>
+      <div class="qc-row"><div class="qc-dot g"></div><div><strong>PASS</strong> — Flexible, not tearing</div></div>
+      <div class="qc-row"><div class="qc-dot r"></div><div><strong>FAIL</strong> — Overcooked or mushy → discard</div></div>
+    </div>
+    <div class="qc-card">
+      <h3>Besciamella</h3>
+      <div class="qc-row"><div class="qc-dot g"></div><div><strong>PASS</strong> — Smooth, no lumps, pourable</div></div>
+      <div class="qc-row"><div class="qc-dot r"></div><div><strong>FAIL</strong> — Too thick, thin with milk</div></div>
+    </div>
+    <div class="qc-card">
+      <h3>Final Product</h3>
+      <div class="qc-row"><div class="qc-dot g"></div><div><strong>PASS</strong> — Holds shape when cut</div></div>
+      <div class="qc-row"><div class="qc-dot g"></div><div><strong>PASS</strong> — Layers visible, not collapsing</div></div>
+      <div class="qc-row"><div class="qc-dot r"></div><div><strong>FAIL</strong> — Falling apart, too much liquid</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 08: REHEAT -->
+<section>
+  <div class="reheat">
+    <div class="reheat-left">
+      <div class="kicker">SOP / 08 · SERVICE</div>
+      <h2>REHEAT<br/>TO <em>dine-in</em><br/>STANDARD</h2>
+      <p>
+        Frozen portions are only as good as the reheat. Match the dine-in experience every single time.
+        Crust on top, molten center, layers intact. If it doesn't hit, it doesn't go out.
+      </p>
+    </div>
+    <div class="reheat-right">
+
+      <div class="reheat-method">
+        <div class="num">A</div>
+        <div class="body">
+          <h4>From Frozen — Convection Oven</h4>
+          <div class="specs"><span>375°F · 190°C</span><span>35–45 MIN</span></div>
+          <ol>
+            <li>Keep in foil container. Cover loosely with foil.</li>
+            <li>Bake covered 25 min. Internal temp climbing.</li>
+            <li>Remove foil cover. Bake 10–15 min until top recrisps.</li>
+            <li>Probe center: <strong>165°F / 74°C minimum</strong>.</li>
+            <li>Rest 5 min before plating. Layers set.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="reheat-method">
+        <div class="num">B</div>
+        <div class="body">
+          <h4>From Thawed (Refrigerated 24 hr) — Convection</h4>
+          <div class="specs"><span>375°F · 190°C</span><span>20–25 MIN</span></div>
+          <ol>
+            <li>Cover loosely with foil. Bake 12 min.</li>
+            <li>Uncover. Bake 8–12 min, top golden, edges bubbling.</li>
+            <li>Probe center: <strong>165°F / 74°C minimum</strong>.</li>
+            <li>Rest 5 min before plating.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="reheat-method">
+        <div class="num">C</div>
+        <div class="body">
+          <h4>Express — Microwave Then Salamander</h4>
+          <div class="specs"><span>FOR SPEED ONLY</span><span>~6 MIN</span></div>
+          <ol>
+            <li>From thawed: microwave covered, medium power, 3–4 min.</li>
+            <li>Transfer to oven-safe plate.</li>
+            <li>Under salamander 60–90 sec to set the crust.</li>
+            <li>Probe center: <strong>165°F / 74°C minimum</strong>.</li>
+            <li>Use only when ticket time demands it. Method A or B preferred.</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="reheat-method">
+        <div class="num">D</div>
+        <div class="body">
+          <h4>Plating Standard</h4>
+          <div class="specs"><span>EVERY TICKET</span><span>NO EXCEPTIONS</span></div>
+          <ol>
+            <li>Warm plate. Center the portion, layers facing diner.</li>
+            <li>Spoon any released ragù around the base — never on top.</li>
+            <li>Fresh grated Parmigiano. Single basil leaf optional.</li>
+            <li>Wipe rim. Run it.</li>
+          </ol>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 09: MAESTRO NOTES -->
+<section>
+  <div class="section-head">
+    <div class="section-num">09</div>
+    <div class="section-title">MAESTRO'S<br/>NOTES</div>
+    <div class="section-meta">FABRIZIO'S RULES<br/>OPERATIONALIZED</div>
+  </div>
+  <div class="maestro">
+    <div class="maestro-card">
+      <div class="num">RULE 01</div>
+      <p>"Browning the meat is non-negotiable. No color, no flavor."</p>
+    </div>
+    <div class="maestro-card">
+      <div class="num">RULE 02</div>
+      <p>"Wine before tomato. Always. The acid needs the alcohol gone first."</p>
+    </div>
+    <div class="maestro-card">
+      <div class="num">RULE 03</div>
+      <p>"Three hours minimum on the ragù. The clock is the recipe."</p>
+    </div>
+    <div class="maestro-card">
+      <div class="num">RULE 04</div>
+      <p>"Besciamella stays loose. Heavy sauce makes heavy lasagna."</p>
+    </div>
+    <div class="maestro-card">
+      <div class="num">RULE 05</div>
+      <p>"Ice bath for the pasta. Mandatory. No exceptions."</p>
+    </div>
+    <div class="maestro-card">
+      <div class="num">RULE 06</div>
+      <p>"Do not rush the cooling. A hot cut is a broken pan."</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h3>TUTTO È <em>Possibile</em></h3>
+      <p>Lasagna al Ragù — Production SOP. Fabrizio Cercatore Standard. Hot Italian / Passione Brands kitchen documentation.</p>
+    </div>
+    <div>
+      <div class="label">DOCUMENT</div>
+      <p>SOP-LAS-001<br/>Version 1.0<br/>April 2026</p>
+    </div>
+    <div>
+      <div class="label">QUESTIONS</div>
+      <p>shop@hotitalian.net<br/>Kitchen Lead on shift</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>#PIZZAASART · #PASSIONE · #EATREAL</div>
+    <div>HOT ITALIAN · KITCHEN STANDARD</div>
+  </div>
+</footer>
+
+</body>
+</html>
