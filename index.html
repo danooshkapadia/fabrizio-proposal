@@ -64,10 +64,11 @@
   }
   .hero h1{
     font-family:'Archivo Black',sans-serif;
-    font-size:clamp(56px,8vw,128px);
+    font-size:clamp(44px,8vw,128px);
     line-height:.88;
     letter-spacing:-.02em;
     text-transform:uppercase;
+    overflow-wrap:break-word;
   }
   .hero h1 .ragu{
     font-family:'Playfair Display',serif;
@@ -715,8 +716,9 @@
 
   /* ============ RESPONSIVE ============ */
   @media (max-width: 900px){
-    .hero{grid-template-columns:1fr;}
+    .hero{grid-template-columns:1fr;min-height:auto;}
     .hero-left{border-right:none;border-bottom:2px solid var(--black);padding:32px 20px;}
+    .hero-right{min-height:50vh;}
     .hero-meta{grid-template-columns:repeat(2,1fr);}
     .topbar{grid-template-columns:1fr;text-align:center;gap:6px;padding:10px 16px;}
     .topbar .left,.topbar .right{text-align:center;}
@@ -749,6 +751,70 @@
     .footer-grid{grid-template-columns:1fr;}
     .footer-bottom{flex-direction:column;gap:8px;text-align:center;}
   }
+
+  @media (max-width: 600px){
+    .topbar{padding:8px 12px;gap:4px;}
+    .topbar .center{font-size:15px;}
+    .topbar .left,.topbar .right{font-size:11px;letter-spacing:.14em;}
+    .hero-left{padding:24px 16px;}
+    .hero-right{min-height:40vh;}
+    .hero .kicker{font-size:12px;letter-spacing:.22em;margin-bottom:16px;}
+    .hero-meta{margin-top:28px;}
+    .hero-meta div{padding:12px 8px 12px 0;}
+    .hero-meta .label{font-size:10px;letter-spacing:.18em;}
+    .hero-meta .val{font-size:17px;}
+    .hero-right .overlay-tag{top:12px;left:12px;font-size:11px;padding:6px 10px;letter-spacing:.18em;}
+    .hero-right .overlay-caption{bottom:12px;right:12px;left:12px;font-size:12px;letter-spacing:.14em;}
+    .tagline{font-size:14px;line-height:1.5;margin-top:20px;}
+    .marquee{padding:10px 0;}
+    .marquee-track{font-size:16px;gap:28px;}
+    .section-head{padding:32px 16px 16px;gap:8px;}
+    .section-num{font-size:48px;}
+    .section-title{font-size:24px;}
+    .section-meta{font-size:12px;letter-spacing:.16em;}
+    .timeline{padding:20px 16px;gap:16px;}
+    .timeline-card{padding:16px;}
+    .timeline-card h3{font-size:17px;}
+    .ing-block{padding:24px 16px;}
+    .ing-block .ing-name{font-size:20px;margin-bottom:18px;}
+    .yield-row{padding:12px 16px;font-size:12px;letter-spacing:.16em;flex-direction:column;gap:4px;text-align:center;}
+    .station{padding:24px 16px;}
+    .station .num{font-size:40px;}
+    .station h3{font-size:18px;}
+    .step-id{padding:20px 16px;}
+    .step-id .num{font-size:64px;}
+    .step-id .name{font-size:18px;}
+    .step-body{padding:20px 16px;}
+    .phase{grid-template-columns:48px 1fr;gap:12px;padding:12px 0;}
+    .assembly-left,.assembly-right{padding:24px 16px;}
+    .assembly-left h3,.assembly-right h3{font-size:24px;}
+    .layer{grid-template-columns:40px 1fr;gap:12px;padding:12px;}
+    .layer .n{font-size:20px;}
+    .bake-block{padding:20px;}
+    .bake-block .temp{font-size:48px;}
+    .bake-block .temp small{font-size:18px;}
+    .bake-block .time{font-size:15px;letter-spacing:.18em;}
+    .repeat-banner{font-size:13px;letter-spacing:.18em;padding:12px;}
+    .cp-card{padding:28px 16px;}
+    .cp-card .icon{font-size:48px;}
+    .cp-card h3{font-size:20px;}
+    .qc{padding:24px 16px;}
+    .qc-grid{grid-template-columns:1fr;gap:16px;}
+    .qc-card{padding:18px;}
+    .qc-card h3{font-size:17px;}
+    .reheat-left{padding:28px 16px;}
+    .reheat-left h2{font-size:34px;}
+    .reheat-left p{font-size:14px;}
+    .reheat-method{grid-template-columns:56px 1fr;}
+    .reheat-method .num{font-size:22px;}
+    .reheat-method .body{padding:18px 16px;}
+    .reheat-method .specs{flex-wrap:wrap;gap:12px;font-size:12px;}
+    .maestro-card{padding:24px 16px;}
+    .maestro-card p{font-size:17px;}
+    footer{padding:28px 16px;}
+    footer h3{font-size:24px;}
+    .footer-bottom{font-size:11px;letter-spacing:.16em;}
+  }
 </style>
 </head>
 <body>
@@ -768,7 +834,7 @@
       <h1>LASAGNA<br/>AL <span class="ragu">Ragù</span></h1>
       <p class="tagline">
         The Maestro's standard, written for the line. Follow the steps, hit the cues, ship the product.
-        <strong>No questions. No shortcuts. No compromises.</strong>
+        <strong>No shortcuts. No compromises.</strong>
       </p>
     </div>
     <div class="hero-meta">
@@ -1333,7 +1399,7 @@
     </div>
     <div>
       <div class="label">QUESTIONS</div>
-      <p>shop@hotitalian.net<br/>Kitchen Lead on shift</p>
+      <p>Fabrizio@passionepizza.com<br/>Kitchen Lead on shift</p>
     </div>
   </div>
   <div class="footer-bottom">
